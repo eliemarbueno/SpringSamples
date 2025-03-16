@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eliemarbueno.catalog.application.api.common.v1.dto.ApiInfoResponseDTO;
-import com.eliemarbueno.catalog.shared.constants.v1.ConstantsApiEndpoints;
+import com.eliemarbueno.catalog.shared.constant.v1.ConstantsApiEndpoints;
+import com.eliemarbueno.catalog.shared.util.v1.DateFunctions;
 import com.eliemarbueno.catalog.shared.util.v1.LogFunctions;
 import com.eliemarbueno.catalog.shared.util.v1.VersionFunctions;
 
@@ -29,6 +30,6 @@ public class ApiInfoController {
 		var version = new VersionFunctions();
 
 		return ResponseEntity.ok(new ApiInfoResponseDTO(applicationName, applicationDescription, version.getVersion(),
-				"UP", System.currentTimeMillis()));
+				"UP", DateFunctions.getNow()));
 	}
 }

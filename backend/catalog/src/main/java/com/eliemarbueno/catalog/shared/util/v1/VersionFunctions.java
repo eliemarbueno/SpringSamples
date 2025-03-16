@@ -9,8 +9,8 @@ import java.util.Properties;
 
 import org.slf4j.MDC;
 
-import com.eliemarbueno.catalog.shared.constants.v1.ConstantsApiMessages;
-import com.eliemarbueno.catalog.shared.constants.v1.ConstantsApiParams;
+import com.eliemarbueno.catalog.shared.constant.v1.ConstantsApiMessages;
+import com.eliemarbueno.catalog.shared.constant.v1.ConstantsApiParams;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -28,10 +28,6 @@ public class VersionFunctions {
 			}
 			properties.load(input);
 			version = properties.getProperty("app.version");
-			int i = Integer.parseInt("sasd");
-			System.out.println(i);
-			i++;
-			System.out.println(i);
 		} catch (IOException e) {
 			log.error(LogFunctions.getErrorMessage(e), MDC.getCopyOfContextMap());
 		} catch (Exception e) {
@@ -46,7 +42,8 @@ public class VersionFunctions {
 	@PostConstruct
 	private void checkFileVersionExist(String pathFile) {
 		File credentialsFile = new File(pathFile);
-		log.debug(LogFunctions.getMethod() + "Check version file existing during start: " + pathFile, MDC.getCopyOfContextMap());
+		log.debug(LogFunctions.getMethod() + "Check version file existing during start: " + pathFile,
+				MDC.getCopyOfContextMap());
 		if (!credentialsFile.exists() || !Files.isReadable(Paths.get(pathFile))) {
 			var e = new IllegalStateException(
 					ConstantsApiMessages.MSG_ERR_FILE_NOT_FOUND.replace("{0}", ConstantsApiParams.VERSION_FILE)

@@ -1,4 +1,4 @@
-package com.eliemarbueno.catalog.shared.constants.v1;
+package com.eliemarbueno.catalog.shared.constant.v1;
 public final class ConstantsApiEndpoints {
     // Base URLs
     public static final String API_BASE = "/api";

@@ -3,12 +3,12 @@ package com.eliemarbueno.catalog.shared.util.v1;
 public class LogFunctions {
 
 	public static String getMethodWithClass() {
-		    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-	        StackTraceElement caller = stackTrace[2]; //Considering Method as third Index
-	        
-	        return caller.getClassName() + '.' + caller.getMethodName(); 
+		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+		StackTraceElement caller = stackTrace[2]; // Considering Method as third Index
+
+		return caller.getClassName() + '.' + caller.getMethodName() + ": ";
 	}
-	
+
 	public static String getMethod(int elementLevel) {
 		if (elementLevel < 0) {
 			return "";
@@ -31,16 +31,17 @@ public class LogFunctions {
 
 	public static String getErrorMessageSlim(Exception e) {
 		StackTraceElement[] stackTrace = e.getStackTrace();
-        StackTraceElement caller = stackTrace[0]; //considering last place throws exception
-        
-        String className = caller.getClassName();
-        String methodName = caller.getMethodName();
-        String fileName = caller.getFileName();
-        int lineNumber = caller.getLineNumber();
-        
-        return String.format("[Class: %s, Method: %s, File: %s, Line: %d] %s", className, methodName, fileName, lineNumber, e.getMessage());
+		StackTraceElement caller = stackTrace[0]; // considering last place throws exception
+
+		String className = caller.getClassName();
+		String methodName = caller.getMethodName();
+		String fileName = caller.getFileName();
+		int lineNumber = caller.getLineNumber();
+
+		return String.format("[Class: %s, Method: %s, File: %s, Line: %d] %s", className, methodName, fileName,
+				lineNumber, e.getMessage());
 	}
-	
+
 	public static String getErrorMessage(Exception ex) {
 		StringBuilder message = new StringBuilder();
 		int i = 5;
