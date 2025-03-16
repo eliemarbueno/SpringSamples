@@ -76,6 +76,16 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- Ending relational database - MySQL -->
+		<!-- Starting Flyway -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+		</dependency>
+		<!-- Ending Flyway -->
 	</dependencies>
 
 	<build>

@@ -27,7 +27,7 @@ To do this easily, you can run `docker compose up --build` .
 
 ## Database
 
-mysql 9.0 -> you can run by command: docker container run --rm -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:9.0  --log-bin-trust-function-creators=1
+mysql 9.2 -> you can run by command: docker container run --rm -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:9.2  --log-bin-trust-function-creators=1
 
 ## Configuration
 
