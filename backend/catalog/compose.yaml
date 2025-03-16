@@ -31,7 +31,7 @@ services:
     networks:
       - database_network
   mysql_db:
-    image: mysql:9
+    image: mysql:9.2
     container_name: mysql_db
     restart: always
     environment:
