@@ -86,7 +86,10 @@ COPY --from=extract build/target/extracted/dependencies/ ./
 COPY --from=extract build/target/extracted/spring-boot-loader/ ./
 COPY --from=extract build/target/extracted/snapshot-dependencies/ ./
 COPY --from=extract build/target/extracted/application/ ./
-
+COPY --from=extract build/target/app.jar app/app.jar
 EXPOSE 8000
 
-ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
+# Run the app
+#ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
+# allow remote debugging
+ CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "app/app.jar"]
