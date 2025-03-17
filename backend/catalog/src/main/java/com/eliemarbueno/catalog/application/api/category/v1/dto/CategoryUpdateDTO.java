@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CategoryUpdateDTO {
 
-  private String id;
-  private String name;
+	private String id;
+	private String name;
 }

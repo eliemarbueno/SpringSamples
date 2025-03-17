@@ -33,7 +33,8 @@ public class CategoryService {
 	}
 
 	public CategoryRetrieveDTO findById(String id) {
-		var category = categoryRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Category", "id", id));
+		var category = categoryRepository.findById(id)
+				.orElseThrow(() -> new ItemNotFoundException("Category", "id", id));
 		return new CategoryRetrieveDTO(category.getId(), category.getName());
 	}
 

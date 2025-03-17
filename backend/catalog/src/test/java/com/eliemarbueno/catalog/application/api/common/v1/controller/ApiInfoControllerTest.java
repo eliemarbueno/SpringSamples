@@ -20,31 +20,29 @@ import com.eliemarbueno.catalog.shared.util.v1.VersionFunctions;
 @WebMvcTest(ApiInfoController.class)
 class ApiInfoControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @MockBean
-    private VersionFunctions versionFunctions;
+	@MockBean
+	private VersionFunctions versionFunctions;
 
-    @Value("${application.name:Catalog}")
-    private String applicationName;
+	@Value("${application.name:Catalog}")
+	private String applicationName;
 
-    @Value("${application.description:Spring boot application test of Eliemar Bueno.}")
-    private String applicationDescription;
-   
-    @Test
-    void testGetApiInfo() throws Exception {
-        String dynamicVersion = "0.0.1";
-        
-        when(versionFunctions.getVersion()).thenReturn(dynamicVersion);
+	@Value("${application.description:Spring boot application test of Eliemar Bueno.}")
+	private String applicationDescription;
 
-        mockMvc.perform(get(ConstantsApiEndpoints.API_INFO))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value(applicationName))
-                .andExpect(jsonPath("$.description").value(applicationDescription))
+	@Test
+	void testGetApiInfo() throws Exception {
+		String dynamicVersion = "0.0.1";
+
+		when(versionFunctions.getVersion()).thenReturn(dynamicVersion);
+
+		mockMvc.perform(get(ConstantsApiEndpoints.API_INFO)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.name").value(applicationName))
+				.andExpect(jsonPath("$.description").value(applicationDescription))
 //                .andExpect(jsonPath("$.version").value(dynamicVersion))
-                .andExpect(jsonPath("$.version").exists())
-                .andExpect(jsonPath("$.status").value("UP"))
-                .andExpect(jsonPath("$.date").exists());
-    }
+				.andExpect(jsonPath("$.version").exists()).andExpect(jsonPath("$.status").value("UP"))
+				.andExpect(jsonPath("$.date").exists());
+	}
 }

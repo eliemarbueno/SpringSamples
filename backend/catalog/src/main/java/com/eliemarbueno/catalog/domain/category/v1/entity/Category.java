@@ -26,21 +26,16 @@ import lombok.Setter;
 //)
 public class Category {
 
-  @Id
-  @GeneratedValue(generator = "uuid")
-  @UuidGenerator
-  @Column(
-    name = "category_id",
-    updatable = false,
-    nullable = false,
-    length = 36
-  )
-  private String id;
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@UuidGenerator
+	@Column(name = "category_id", updatable = false, nullable = false, length = 36)
+	private String id;
 
-  @Column(name = "category_name", nullable = false, length = 100)
-  private String name;
+	@Column(name = "category_name", nullable = false, length = 100)
+	private String name;
 
-  public Category(String name) {
-    this.name = name;
-  }
+	public Category(String name) {
+		this.name = name;
+	}
 }

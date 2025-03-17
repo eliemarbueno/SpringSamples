@@ -1,7 +1,7 @@
 package com.eliemarbueno.catalog.application.exception.v1.handler;
 
 public class ItemNotFoundException extends RuntimeException {
-	
+
 	private static final long serialVersionUID = 1L;
 	private final String entity;
 	private final String field;
