@@ -1,4 +1,6 @@
 package com.eliemarbueno.catalog.application.api.category.v1.dto;
 
-public record CategoryCreateDTO(String name) {
+import jakarta.validation.constraints.NotBlank;
+
+public record CategoryCreateDTO(@NotBlank String name) {
 }

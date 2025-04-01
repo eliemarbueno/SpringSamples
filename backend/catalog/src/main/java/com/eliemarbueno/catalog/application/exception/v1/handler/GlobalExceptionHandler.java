@@ -1,16 +1,19 @@
 package com.eliemarbueno.catalog.application.exception.v1.handler;
 
-import com.eliemarbueno.catalog.application.exception.v1.dto.ErrorResponse;
-import com.eliemarbueno.catalog.shared.util.v1.DateFunctions;
-import com.eliemarbueno.catalog.shared.util.v1.LogFunctions;
 import java.io.IOException;
-import lombok.extern.slf4j.Slf4j;
+
 import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import com.eliemarbueno.catalog.application.exception.v1.dto.ErrorResponse;
+import com.eliemarbueno.catalog.shared.util.v1.DateFunctions;
+import com.eliemarbueno.catalog.shared.util.v1.LogFunctions;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestControllerAdvice
@@ -49,6 +52,6 @@ public class GlobalExceptionHandler {
 		ErrorResponse errorResponse = new ErrorResponse(DateFunctions.getNow(), HttpStatus.NOT_FOUND.value(),
 				"Item not found", e.getMessage(), null);
 
-		return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
 	}
 }

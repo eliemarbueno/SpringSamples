@@ -8,10 +8,20 @@ public class ItemNotFoundException extends RuntimeException {
 	private final String value;
 
 	public ItemNotFoundException(String entity, String field, String value) {
-//		super(String.format("Entity '%s' already exists with %s '%s'.", entity, field, value));
+		// super(String.format("Entity '%s' already exists with %s '%s'.", entity,
+		// field, value));
 		super(String.format("%s with %s '%s' not found.", entity, field, value));
 		this.entity = entity;
 		this.field = field;
 		this.value = value;
+	}
+
+	public ItemNotFoundException(String entity) {
+		// super(String.format("Entity '%s' already exists with %s '%s'.", entity,
+		// field, value));
+		super(String.format("%s not found.", entity));
+		this.entity = entity;
+		this.field = null;
+		this.value = null;
 	}
 }

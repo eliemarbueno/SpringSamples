@@ -1,7 +1,7 @@
 package com.eliemarbueno.catalog.application.api.category.v1.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,10 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryUpdateDTO {
 
-  private String id;
-  private String name;
+	private String id;
+	@NotBlank
+	private String name;
 
-  public CategoryUpdateDTO(String name) {
-    this.name = name;
-  }
+	public CategoryUpdateDTO(String name) {
+		this.name = name;
+	}
 }
